@@ -1,0 +1,35 @@
+create database twit;
+use twit;
+
+create table user(
+	ID varchar(20),
+    password varchar(20),
+    primary key(ID)
+);
+
+create table follow(
+	ID varchar(20),
+    fromUser varchar(20),
+    toUser varchar(20),
+    foreign key(ID) references user(ID),
+    primary key(fromUser, toUser)
+);
+
+create table article(
+	num Int,
+	ID varchar(20),
+    content text,
+    foreign key(ID) references user(ID),
+	primary key(num)
+);
+
+insert into user values ("hyun", "1234");
+insert into user values ("ddd", "12345");
+insert into follow values ("hyun", "hyun", "ddd");
+insert into article values (0, "hyun", "hello world!");
+insert into article values (2, "hyun", "I'm still hungry!");
+insert into article values (1, "ddd", "tired world!!!");
+
+select * from article;
+select * from follow;
+select * from user;
